@@ -5,9 +5,11 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
+@Component
 public class MyAuthProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -22,6 +24,7 @@ public class MyAuthProvider implements AuthenticationProvider {
 
     @Override
     public boolean supports(Class<?> authentication) {
+        System.out.println("supports");
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 }
